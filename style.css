@@ -1,0 +1,14 @@
+body{
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-image: url('bginventory.png');
+    background-attachment: fixed;
+    background-size: cover;
+    
+   
+}
+input{
+    border-top:none !important ;
+    border-right:none !important ;
+    border-left:none !important ;
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-12 text-center p-5 text-light">
+            <h1 >SD Inventory System</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p id="date" class="p-2 text-end text-dark"></p>
+        </div>
+    </div>
+    <div class="row dropdown">
+        <div class="col-md-9 text-center p-2 text-light">
+            <label for="">Card</label>
+            <select name="" id="card" class=" btn btn-secondary dropdown-toggle" type="button"
+            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+    </div>
+    <div class="row dropdown">
+        <div class="col-md-12 text-center p-2 text-light">
+            <label for="">Items</label>
+            <select name="" id="itemsMain1" class=" btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <option value="item1">Oil / liter</option>
+                <option value="item2">Meat / kg</option>
+                <option value="item3">Salt / kg</option>
+            </select>
+
+            <input class="shadow bg-body rounded" type="text" name="" id="qty" placeholder="Quantity">
+            <input class="shadow bg-body rounded" type="text" name="" id="total" placeholder="Total">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center p-2 text-light">
+            <label for="">Items</label>
+            <select name="" id="itemsMain2" class=" btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <option value="item4">Oil / liter</option>
+                <option value="item5">Meat / kg</option>
+                <option value="item6">Salt / kg</option>
+            </select>
+
+            <input class="shadow bg-body rounded" type="text" name="" id="qty2" placeholder="Quantity">
+            <input class="shadow bg-body rounded" type="text" name="" id="total2" placeholder="Total">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center p-2 text-light">
+            <label for="">Items</label>
+            <select name="" id="itemsMain3" class=" btn btn-secondary dropdown-toggle" type="button"
+                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <option value="item7">Oil / liter</option>
+                <option value="item8">Meat / kg</option>
+                <option value="item9">Salt / kg</option>
+            </select>
+            <input class="shadow bg-body rounded" type="text" name="" id="qty3" placeholder="Quantity">
+            <input class="shadow bg-body rounded" type="text" name="" id="total3" placeholder="Total">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center p-2 text-light">
+            <label for="">All Total</label>
+            <input class="shadow bg-body rounded" type="text" name="" id="mainTotal" placeholder="Total">
+            <input class="shadow bg-body rounded" type="text" name="" id="subTotal" placeholder="Sub Total">
+            <input class="shadow bg-body rounded" type="text" name="" id="cardTotal" placeholder="Card Discount">
+            <input class="btn btn-primary" type="button" value="calculate" onclick="calc()">
+            <input class="btn btn-success" type="button" value="Print" onclick="window.print()">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+          <!-- <a href="E:\Visual Studio Code\projects\Inevtory system\Bill.html"> <input class="btn btn-primary" type="button" value="calculate" onclick="calc()"></a>  -->
+          <input class="shadow bg-body rounded" type="text" name="" id="mainTotal2" placeholder="Total" style="display: none;">
+          <input class="shadow bg-body rounded" type="text" name="" id="subTotal2" placeholder="Sub Total" style="display: none;">
+        <a href="E:\Visual Studio Code\projects\Inevtory system\Bill.html"> <input class="btn btn-primary" type="button" value="calculate" onclick="bill()"></a> 
+
+        </div>
+    </div>
+
+
+
+    <script>
+        var d=new Date();
+        document.getElementById("date").innerHTML=d;
+
+
+
+        function calc() {
+            var gross1 = document.getElementById("itemsMain1").value;
+            var quantity = parseInt(document.getElementById("qty").value);
+            var card1=document.getElementById("card").value;
+            // Oil
+            if (quantity == 1 && gross1 == "item1") {
+                rate = 40;
+                result = rate * quantity;
+                document.getElementById("total").value = result;
+            }
+            if (quantity > 1 && gross1 == "item1") {
+                rate = 40;
+                result = rate * quantity;
+                document.getElementById("total").value = result;
+            }
+            // Meat
+            if (quantity == 1 && gross1 == "item2") {
+                rate = 300;
+                result = rate * quantity;
+                document.getElementById("total").value = result;
+            }
+            if (quantity > 1 && gross1 == "item2") {
+                rate = 300;
+                result = rate * quantity;
+                document.getElementById("total").value = result;
+            }
+            // Salt
+            if (quantity == 1 && gross1 == "item3") {
+                rate = 160;
+                result = rate * quantity;
+                document.getElementById("total").value = result;
+            }
+            if (quantity > 1 && gross1 == "item3") {
+                rate = 160;
+                result = rate * quantity;
+                document.getElementById("total").value = result;
+            }
+
+            // 2nd Item
+            var gross2 = document.getElementById("itemsMain2").value;
+            var quantity2 = parseInt(document.getElementById("qty2").value);
+            // Oil
+            if (quantity2 == 1 && gross2 == "item4") {
+                rate2 = 40;
+                result2 = rate2 * quantity2;
+                document.getElementById("total2").value = result2;
+            }
+            if (quantity2 > 1 && gross2 == "item4") {
+                rate2 = 40;
+                result2 = rate2 * quantity2;
+                document.getElementById("total2").value = result2;
+            }
+            // Meat
+            if (quantity2 == 1 && gross2 == "item5") {
+                rate2 = 300;
+                result2 = rate2 * quantity2;
+                document.getElementById("total2").value = result2;
+            }
+            if (quantity2 > 1 && gross2 == "item5") {
+                rate2 = 300;
+                result2 = rate2 * quantity2;
+                document.getElementById("total2").value = result2;
+            }
+            // Salt
+            if (quantity2 == 1 && gross2 == "item6") {
+                rate2 = 160;
+                result2 = rate2 * quantity2;
+                document.getElementById("total2").value = result2;
+            }
+            if (quantity2 > 1 && gross2 == "item6") {
+                rate2 = 160;
+                result2 = rate2 * quantity2;
+                document.getElementById("total2").value = result2;
+            }
+
+
+            // 3nd Item
+            var gross3 = document.getElementById("itemsMain3").value;
+            var quantity3 = parseInt(document.getElementById("qty3").value);
+            // Oil
+            if (quantity3 == 1 && gross3 == "item7") {
+                rate3 = 40;
+                result3 = rate3 * quantity3;
+                document.getElementById("total3").value = result3;
+            }
+            if (quantity3 > 1 && gross3 == "item7") {
+                rate3 = 40;
+                result3 = rate3 * quantity3;
+                document.getElementById("total3").value = result3;
+            }
+            // Meat
+            if (quantity3 == 1 && gross3 == "item8") {
+                rate3 = 300;
+                result3 = rate3 * quantity3;
+                document.getElementById("total3").value = result3;
+            }
+            if (quantity3 > 1 && gross3 == "item8") {
+                rate3 = 300;
+                result3 = rate3 * quantity3;
+                document.getElementById("total3").value = result3;
+            }
+            // Salt
+            if (quantity3 == 1 && gross3 == "item9") {
+                rate3 = 160;
+                result3 = rate3 * quantity3;
+                document.getElementById("total3").value = result3;
+            }
+            if (quantity3 > 1 && gross3 == "item9") {
+                rate3 = 160;
+                result3 = rate3 * quantity3;
+                document.getElementById("total3").value = result3;
+            }
+
+
+
+            // Main total
+
+            mainResult = result + result2 + result2;
+            document.getElementById("mainTotal").value = mainResult;
+
+            if(mainResult>5000){
+                disc=(mainResult*5)/100;
+                subTotal= mainResult-disc;
+                document.getElementById("subTotal").value=subTotal;
+            }
+
+            //Card 
+            if(card1="yes"){
+                disc2=(mainResult*10)/100;
+                subTotal=mainResult-disc2;
+                document.getElementById("cardTotal").value=subTotal;
+            }
+            if(card1="no"){
+                disc3=mainResult;
+                document.getElementById("cardTotal").value=disc3;
+            }
+
+        }
+     
+
+
+
+        // function bill(){
+        //     mainResult = result + result2 + result2;
+        //     document.getElementById("mainTotal2").value = mainResult;
+
+        //     if(mainResult>5000){
+        //         disc=(mainResult*5)/100;
+        //         subTotal= mainResult-disc;
+        //         document.getElementById("subTotal2").value=subTotal;
+        //     }
+           
+         
+               
+        // }
+
+
+    </script>
+
+</body>
+
+</html>
